@@ -47,7 +47,7 @@ export const fetchNews =
       dispatch(getNewsStart());
       const response = await getNews(country.countryCode);
       dispatch(getNewsSuccess(response));
-    } catch (error) {
+    } catch (error: any) {
       dispatch(getNewsFailure(error.message));
     }
   };
