@@ -5,6 +5,8 @@ import { Country } from "../../types/countryTypes";
 import { fetchNews } from "../../slices/newsSlice";
 import { News } from "../../types/newsTypes";
 
+import { formatDate } from "../../Utils/dateFormatter";
+
 const NewsContainer = () => {
   const dispatch = useDispatch();
 
@@ -32,7 +34,7 @@ const NewsContainer = () => {
         <div key={n.url}>
           <h1>{n.title}</h1>
           {n.author}
-          {n.publishedAt}
+          {formatDate(n.publishedAt)}
           <a href={n.url}>Read more</a>
         </div>
       ))}
