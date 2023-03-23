@@ -1,0 +1,16 @@
+import axios, { AxiosResponse } from "axios";
+import { News } from "../types/newsTypes";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+interface NewsApiResponse {
+  articles: News[];
+}
+
+export const getNews = async (country: string): Promise<News[]> => {
+  const url = `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${API_KEY}`;
+
+  const response: AxiosResponse<NewsApiResponse> = await axios.get(url);
+
+  return response.data.articles;
+};
