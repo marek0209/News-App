@@ -4,6 +4,7 @@ import { RootState } from "../../store";
 import { Country } from "../../types/countryTypes";
 import { fetchNews } from "../../slices/newsSlice";
 import { News } from "../../types/newsTypes";
+import { removeSource } from "../../Utils/sourceRemove";
 
 import { formatDate } from "../../Utils/dateFormatter";
 
@@ -32,7 +33,7 @@ const NewsContainer = () => {
     <>
       {news.map((n: News) => (
         <div key={n.url}>
-          <h1>{n.title}</h1>
+          <h1>{removeSource(n.title, n.author)}</h1>
           {n.author}
           {formatDate(n.publishedAt)}
           <a href={n.url}>Read more</a>
