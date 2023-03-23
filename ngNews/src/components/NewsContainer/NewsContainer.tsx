@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { Country } from "../../types/countryTypes";
 import { fetchNews } from "../../slices/newsSlice";
-import { News } from "../../types/newsTypes";
-import { removeSource } from "../../Utils/sourceRemove";
-
-import { formatDate } from "../../Utils/dateFormatter";
 import FeaturedNews from "./FeaturedNews";
+import StandardNews from "./StandardNews";
 
 const NewsContainer = () => {
   const dispatch = useDispatch();
@@ -38,15 +35,8 @@ const NewsContainer = () => {
       max-w-7xl"
         >
           {news.length > 0 && <FeaturedNews news={news[0]} />}
-          <div class="grid grid-cols-12 sm:px-5 gap-x-8 gap-y-16">
-            {news.slice(1).map((n: News) => (
-              <div key={n.url}>
-                <h1>{removeSource(n.title, n.author ?? "")}</h1>
-                {n.author}
-                {formatDate(n.publishedAt)}
-                <a href={n.url}>Read more</a>
-              </div>
-            ))}
+          <div className="grid grid-cols-3 sm:px-5 gap-x-8 gap-y-16">
+            <StandardNews news={news.slice(1)} />
           </div>
         </div>
       </div>
