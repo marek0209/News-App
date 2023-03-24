@@ -6,8 +6,11 @@ import { setCurrentCountry } from "../../slices/countrySlice";
 import countries from "../../Utils/countryList";
 import { Country } from "../../types/countryTypes";
 import { Link } from "react-router-dom";
+import TaskModal from "../Modals/taskModal";
 
 const Sidebar: React.FC = () => {
+  const [taskModalOpen, setTaskModalOpen] = useState(false);
+
   const selectedCountry = useSelector(
     (state: RootState) => state.country.currentCountry
   );
@@ -24,6 +27,10 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
+      <TaskModal
+        isOpen={taskModalOpen}
+        onClose={() => setTaskModalOpen(false)}
+      />
       <Menu isOpen={false} right noOverlay>
         <div>
           <aside
@@ -34,6 +41,7 @@ const Sidebar: React.FC = () => {
               <ul className="space-y-2 ">
                 <li>
                   <button
+                    onClick={() => setTaskModalOpen(true)}
                     type="button"
                     className="block md:hidden lg:hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >

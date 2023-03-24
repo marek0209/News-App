@@ -21,6 +21,7 @@ const NewsContainer = () => {
 
   useEffect(() => {
     dispatch(
+      // @ts-ignore
       fetchNews(
         currentCountry ? currentCountry : { countryCode: "pl", label: "Poland" }
       )
