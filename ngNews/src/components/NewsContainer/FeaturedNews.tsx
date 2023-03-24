@@ -36,14 +36,14 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
               </p>
               <p className="inline text-xs font-medium">New</p>
             </div>
-            <a className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl">
+            <div className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl">
               {removeSource(news.title, news.author ?? "")}
-            </a>
+            </div>
             <div className="pt-2 pr-0 pb-0 pl-0">
               <p className="text-sm font-medium inline">Source:</p>
-              <a className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1 underline">
+              <div className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1 underline">
                 {news.author}
-              </a>
+              </div>
               <p className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1">
                 · {formatDate(news.publishedAt)} ·
               </p>
