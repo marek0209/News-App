@@ -17,6 +17,8 @@ const NewsContainer = () => {
     (state: RootState) => state.country.currentCountry
   );
 
+  const view = useSelector((state: RootState) => state.view.view);
+
   useEffect(() => {
     dispatch(
       fetchNews(
@@ -42,7 +44,14 @@ const NewsContainer = () => {
       max-w-7xl"
         >
           {news.length > 0 && <FeaturedNews news={news[0]} />}
-          <div className="grid sm:px-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-x-8 gap-y-16">
+
+          <div
+            className={
+              view === "grid"
+                ? "grid sm:px-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
+                : "grid sm:px-5 grid-cols-1   gap-x-8 gap-y-16"
+            }
+          >
             <StandardNews news={news.slice(1)} />
           </div>
         </div>

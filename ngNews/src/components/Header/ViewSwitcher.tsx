@@ -1,11 +1,25 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { switchView, ViewType } from "../../slices/viewSlice";
+import { RootState } from "../../store";
 
 const ViewSwitcher = () => {
+  const dispatch = useDispatch();
+  const view = useSelector((state: RootState) => state.view);
+
+  const handleViewChange = () => {
+    dispatch(switchView());
+  };
+
   return (
     <>
-      <div className="mr-10 bg-gray-800 text-sm text-gray-500 leading-none  inline-flex mr-50">
+      <div className="  mr-10 bg-gray-800 text-sm text-gray-500 leading-none  inline-flex mr-50">
         <button
-          className="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-500 focus:text-blue-500 rounded-l-full px-4 py-2 active"
+          onClick={handleViewChange}
+          className={
+            "inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-slate-50 focus:text-blue-500 rounded-r-full px-4 py-2" +
+            (view.view === ViewType.Grid ? "active text-blue-500" : "")
+          }
           id="grid"
         >
           <svg
@@ -28,8 +42,11 @@ const ViewSwitcher = () => {
           <span>Grid</span>
         </button>
         <button
-          className="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-500 focus:text-blue-500 rounded-r-full px-4 py-2"
-          id="list"
+          onClick={handleViewChange}
+          className={
+            "inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-slate-50 focus:text-blue-500 rounded-r-full px-4 py-2" +
+            (view.view === ViewType.List ? "active text-blue-500" : "")
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
