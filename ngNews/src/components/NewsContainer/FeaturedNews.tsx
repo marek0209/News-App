@@ -56,6 +56,7 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
         <div className="w-full md:w-1/2">
           <div className="block">
             <img
+              alt="Featured News Image"
               src={
                 news.urlToImage
                   ? news.urlToImage
