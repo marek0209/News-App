@@ -15,7 +15,10 @@ function App() {
         <Router>
           <Header />
           <Sidebar />
-          <NewsContainer />
+          <Routes>
+            <Route path="/country/:country" element={<NewsContainer />} />
+            <Route path="/" element={<NewsContainer />} />
+          </Routes>
         </Router>
       </Provider>
     </div>

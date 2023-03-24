@@ -13,11 +13,17 @@ const NewsContainer = () => {
     (state: RootState) => state.news
   );
 
-  let currentCountry: Country = { countryCode: "pl", label: "Poland" };
+  const currentCountry = useSelector(
+    (state: RootState) => state.country.currentCountry
+  );
 
   useEffect(() => {
-    dispatch(fetchNews(currentCountry));
-  }, []);
+    dispatch(
+      fetchNews(
+        currentCountry ? currentCountry : { countryCode: "pl", label: "Poland" }
+      )
+    );
+  }, [currentCountry, dispatch]);
 
   if (loading) {
     return <>Loading...</>;
@@ -29,6 +35,7 @@ const NewsContainer = () => {
 
   return (
     <>
+      <h2>News for {currentCountry?.label}</h2>
       <div className="text-gray-900 pt-12 pr-0 pb-14 pl-0 bg-white w-full">
         <div
           className="pt-10 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16

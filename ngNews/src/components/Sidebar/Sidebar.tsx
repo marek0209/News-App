@@ -5,6 +5,7 @@ import { RootState } from "../../store";
 import { setCurrentCountry } from "../../slices/countrySlice";
 import countries from "../../Utils/countryList";
 import { Country } from "../../types/countryTypes";
+import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   const selectedCountry = useSelector(
@@ -53,9 +54,10 @@ const Sidebar: React.FC = () => {
 
               <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
                 {filteredCountries.map((country) => (
-                  <li>
-                    <a
-                      href="#"
+                  <li key={country.countryCode}>
+                    <Link
+                      to={`/country/${country.countryCode}`}
+                      onClick={() => handleCountryClick(country)}
                       className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                     >
                       <span className="ml-3">
@@ -63,14 +65,14 @@ const Sidebar: React.FC = () => {
                         <img
                           src={
                             "https://flagcdn.com/20x15/" +
-                            country.country +
+                            country.countryCode +
                             ".png"
                           }
                           alt={country.label}
                         />
                         {country.label}
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
