@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import NewsContainer from "./components/NewsContainer/NewsContainer";
 import { store } from "./store";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Footer from "./components/Footer/Footer";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/country/:country" element={<NewsContainer />} />
             <Route path="/" element={<NewsContainer />} />
           </Routes>
+          <Footer />
         </Router>
       </Provider>
     </div>
