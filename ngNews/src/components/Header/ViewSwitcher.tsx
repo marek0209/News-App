@@ -3,7 +3,7 @@ import React from "react";
 const ViewSwitcher = () => {
   return (
     <>
-      <div className="mr-10 bg-gray-800 text-sm text-gray-500 leading-none  inline-flex">
+      <div className="mr-10 bg-gray-800 text-sm text-gray-500 leading-none  inline-flex mr-50">
         <button
           className="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-500 focus:text-blue-500 rounded-l-full px-4 py-2 active"
           id="grid"

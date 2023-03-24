@@ -16,10 +16,11 @@ const StandardNews: React.FC<Props> = ({ news }) => {
             <img
               src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
               className="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56 btn-"
+              alt="image placeholder for article"
             />
             <p
               className="bg-green-500 flex items-center leading-none text-sm font-medium text-gray-50 pt-1.5 pr-3 pb-1.5 pl-3
-            rounded-full uppercase inline-block"
+            rounded-full uppercase "
             >
               News
             </p>

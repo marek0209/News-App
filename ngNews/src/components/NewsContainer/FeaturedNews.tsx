@@ -9,7 +9,7 @@ interface Props {
 const FeaturedNews: React.FC<Props> = ({ news }) => {
   return (
     <>
-      <div className="flex flex-col items-center sm:px-5 md:flex-row">
+      <div className=" flex flex-col items-center sm:px-5 md:flex-row">
         <div className="flex flex-col items-start justify-center w-full h-full pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
           <div
             className="flex flex-col items-start justify-center h-full space-y-3 transform md:pr-10 lg:pr-16
@@ -17,7 +17,7 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
           >
             <div
               className="bg-green-500 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
-              uppercase inline-block"
+              uppercase "
             >
               <p className="inline">
                 <svg
@@ -36,7 +36,7 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
               </p>
               <p className="inline text-xs font-medium">New</p>
             </div>
-            <a className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
+            <a className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl">
               {removeSource(news.title, news.author ?? "")}
             </a>
             <div className="pt-2 pr-0 pb-0 pl-0">
