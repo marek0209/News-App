@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-const SideBar = () => {
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store";
+import { setCurrentCountry } from "../../slices/countrySlice";
+import countries from "../../Utils/countryList";
+import { Country } from "../../types/countryTypes";
+
+const Sidebar: React.FC = () => {
+  const selectedCountry = useSelector(
+    (state: RootState) => state.country.currentCountry
+  );
+  const dispatch = useDispatch();
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleCountryClick = (country: Country) => {
+    dispatch(setCurrentCountry(country));
+  };
+
+  const filteredCountries = countries.filter((country) =>
+    country.label.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   return (
     <>
       <Menu isOpen={false} right noOverlay>
@@ -10,85 +30,49 @@ const SideBar = () => {
             aria-label="Sidenav"
           >
             <div className="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                  >
-                    <button
-                      type="button"
-                      className="block md:hidden lg:hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Pop up
-                    </button>
-                  </a>
-                </li>
+              <ul className="space-y-2 ">
                 <li>
                   <button
                     type="button"
-                    className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-pages"
-                    data-collapse-toggle="dropdown-pages"
+                    className="block md:hidden lg:hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                    <span className="flex-1 ml-3 text-left whitespace-nowrap">
-                      Search Here
-                    </span>
+                    Pop up
                   </button>
-                  <ul id="dropdown-pages" className="hidden py-2 space-y-2">
-                    <li>
-                      <a
-                        href="#"
-                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >
-                        Poland
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >
-                        Germany
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      >
-                        United States
-                      </a>
-                    </li>
-                  </ul>
+                </li>
+                <li>
+                  <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                    <input
+                      type="text"
+                      placeholder="Search for a country"
+                      value={searchValue}
+                      onChange={(e) => setSearchValue(e.target.value)}
+                    />
+                  </span>
                 </li>
               </ul>
 
               <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                  >
-                    <span className="ml-3">United States</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                  >
-                    <span className="ml-3">Poland</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                  >
-                    <span className="ml-3">Germany</span>
-                  </a>
-                </li>
+                {filteredCountries.map((country) => (
+                  <li>
+                    <a
+                      href="#"
+                      className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                    >
+                      <span className="ml-3">
+                        {" "}
+                        <img
+                          src={
+                            "https://flagcdn.com/20x15/" +
+                            country.country +
+                            ".png"
+                          }
+                          alt={country.label}
+                        />
+                        {country.label}
+                      </span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </aside>
@@ -98,4 +82,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default Sidebar;

@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import Header from "./components/Header/Header";
 import NewsContainer from "./components/NewsContainer/NewsContainer";
 import { store } from "./store";
-import SideBar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -14,7 +14,7 @@ function App() {
       <Provider store={store}>
         <Router>
           <Header />
-          <SideBar />
+          <Sidebar />
           <NewsContainer />
         </Router>
       </Provider>
