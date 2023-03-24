@@ -10,12 +10,19 @@ function TaskModal({ isOpen, onClose }: ModalProps) {
     return null;
   }
 
+  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
     <div
+      onClick={handleClickOutside}
       id="staticModal"
       data-modal-backdrop="static"
       aria-hidden="true"
-      className="fixed top-10 left-0 right-0 z-40 flex justify-center items-center w-full h-full"
+      className="fixed top-20 left-0 right-0 z-40 flex justify-center items-center w-full h-full"
     >
       <div className="relative w-full h-full max-w-2xl md:h-auto">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">

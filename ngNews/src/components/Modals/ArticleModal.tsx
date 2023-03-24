@@ -16,9 +16,15 @@ const ArticleModal: React.FC<Props> = ({
   url,
   onClose,
 }) => {
+  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
   return (
     <>
       <div
+        onClick={handleClickOutside}
         id="staticModal"
         data-modal-backdrop="static"
         aria-hidden="true"
