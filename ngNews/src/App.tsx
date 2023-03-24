@@ -5,16 +5,17 @@ import { Provider } from "react-redux";
 import Header from "./components/Header/Header";
 import NewsContainer from "./components/NewsContainer/NewsContainer";
 import { store } from "./store";
+import SideBar from "./components/Sidebar/Sidebar";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
       <Provider store={store}>
         <Router>
           <Header />
+          <SideBar />
           <NewsContainer />
-          <h1>App</h1>
         </Router>
       </Provider>
     </div>
