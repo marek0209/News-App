@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import { removeSource } from "../../Utils/sourceRemove";
 
 interface Props {
@@ -11,16 +11,19 @@ interface Props {
 
 const ArticleModal: React.FC<Props> = ({
   title,
-  author,
-  description,
+  author = null,
+  description = null,
   url,
   onClose,
 }) => {
-  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleClickOutside = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
     }
   };
+
+  const authorName = author ?? "";
+
   return (
     <>
       <div
@@ -30,12 +33,10 @@ const ArticleModal: React.FC<Props> = ({
         aria-hidden="true"
         className="fixed top-0 left-0 right-0 z-50 flex justify-center items-center w-full h-full"
       >
-        {/* Modal content */}
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 max-w-lg w-full">
-          {/* Modal header  */}
           <div className="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              {removeSource(title, author ? author : "")}
+              {removeSource(title, authorName)}
             </h3>
 
             <button
@@ -57,13 +58,14 @@ const ArticleModal: React.FC<Props> = ({
             </button>
           </div>
 
-          {/* Modal body */}
           <div className="relative p-4">
-            <div className="mb-4 text-sm text-gray-900">{description}</div>
+            {description && (
+              <div className="mb-4 text-sm text-gray-900">{description}</div>
+            )}
             <div className="flex justify-between">
-              {author && (
+              {authorName && (
                 <span className="mr-2 font-medium text-gray-600 dark:text-gray-300">
-                  {author}
+                  {authorName}
                 </span>
               )}
               <a
@@ -79,7 +81,6 @@ const ArticleModal: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* Background overlay */}
       <div
         data-modal-backdrop="static"
         aria-hidden="true"
