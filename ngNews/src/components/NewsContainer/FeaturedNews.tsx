@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { News } from "../../types/newsTypes";
 import { removeSource } from "../../Utils/sourceRemove";
 import { formatDate } from "../../Utils/dateFormatter";
+import ArticleModal from "../Modals/ArticleModal";
 
 interface Props {
   news: News;
 }
 const FeaturedNews: React.FC<Props> = ({ news }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedNews, setSelectedNews] = useState<News | null>(null);
+
+  const handleOpenModal = (n: News) => {
+    setSelectedNews(n);
+    setModalVisible(true);
+  };
+  const handleCloseModal = () => {
+    setSelectedNews(null);
+    setModalVisible(false);
+  };
   return (
     <>
+      {modalVisible && selectedNews && (
+        <ArticleModal
+          title={selectedNews.title}
+          author={selectedNews.author}
+          description={selectedNews.description}
+          url={selectedNews.url}
+          onClose={handleCloseModal}
+        />
+      )}
       <div className=" flex flex-col items-center sm:px-5 md:flex-row ">
         <div className="flex flex-col items-start justify-center w-full h-full pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
           <div
@@ -36,7 +57,10 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
               </p>
               <p className="inline text-xs font-medium">New</p>
             </div>
-            <div className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl z-10">
+            <div
+              className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl z-10"
+              onClick={() => handleOpenModal(news)}
+            >
               {removeSource(news.title, news.author ?? "")}
             </div>
             <div className="pt-2 pr-0 pb-0 pl-0">
@@ -53,7 +77,7 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2" onClick={() => handleOpenModal(news)}>
           <div className="block">
             <img
               alt="Featured News Image"
