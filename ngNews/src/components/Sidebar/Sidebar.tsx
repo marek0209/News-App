@@ -6,7 +6,7 @@ import { setCurrentCountry } from "../../slices/countrySlice";
 import countries from "../../Utils/countryList";
 import { Country } from "../../types/countryTypes";
 import { Link } from "react-router-dom";
-import TaskModal from "../Modals/taskModal";
+import TaskModal from "../Modals/TaskModal";
 
 const Sidebar: React.FC = () => {
   const [taskModalOpen, setTaskModalOpen] = useState(false);
@@ -38,12 +38,12 @@ const Sidebar: React.FC = () => {
             aria-label="Sidenav"
           >
             <div className="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-              <ul className="space-y-2 ">
+              <ul className="space-y-2 flex justify-center flex-wrap ">
                 <li>
                   <button
                     onClick={() => setTaskModalOpen(true)}
                     type="button"
-                    className="block md:hidden lg:hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="block md:hidden lg:hidden text-white  bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 "
                   >
                     Pop up
                   </button>
@@ -54,6 +54,7 @@ const Sidebar: React.FC = () => {
                       type="text"
                       placeholder="Search for a country"
                       value={searchValue}
+                      className="outline-none"
                       onChange={(e) => setSearchValue(e.target.value)}
                     />
                   </span>
@@ -66,11 +67,11 @@ const Sidebar: React.FC = () => {
                     <Link
                       to={`/country/${country.countryCode}`}
                       onClick={() => handleCountryClick(country)}
-                      className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                      className="inline-block p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                     >
-                      <span className="ml-3">
-                        {" "}
+                      <span className="ml-3 ">
                         <img
+                          className=" "
                           src={
                             "https://flagcdn.com/20x15/" +
                             country.countryCode +
