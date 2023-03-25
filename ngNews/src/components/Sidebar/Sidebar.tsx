@@ -10,12 +10,13 @@ import TaskModal from "../Modals/TaskModal";
 
 const Sidebar: React.FC = () => {
   const [taskModalOpen, setTaskModalOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const selectedCountry = useSelector(
     (state: RootState) => state.country.currentCountry
   );
+
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState("");
 
   const handleCountryClick = (country: Country) => {
     dispatch(setCurrentCountry(country));
@@ -31,6 +32,7 @@ const Sidebar: React.FC = () => {
         isOpen={taskModalOpen}
         onClose={() => setTaskModalOpen(false)}
       />
+
       <Menu isOpen={false} right noOverlay>
         <div>
           <aside
@@ -38,16 +40,17 @@ const Sidebar: React.FC = () => {
             aria-label="Sidenav"
           >
             <div className="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-              <ul className="space-y-2 flex justify-center flex-wrap ">
+              <ul className="space-y-2 flex justify-center flex-wrap">
                 <li>
                   <button
                     onClick={() => setTaskModalOpen(true)}
                     type="button"
-                    className="block md:hidden lg:hidden text-white  bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 "
+                    className="block md:hidden lg:hidden text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
                   >
                     Pop up
                   </button>
                 </li>
+
                 <li>
                   <span className="flex-1 ml-3 text-left whitespace-nowrap">
                     <input
@@ -72,11 +75,7 @@ const Sidebar: React.FC = () => {
                       <span className="ml-3 flex items-center">
                         <img
                           className="mr-2"
-                          src={
-                            "https://flagcdn.com/20x15/" +
-                            country.countryCode +
-                            ".png"
-                          }
+                          src={`https://flagcdn.com/20x15/${country.countryCode}.png`}
                           alt={country.label}
                         />
                         <span>{country.label}</span>
