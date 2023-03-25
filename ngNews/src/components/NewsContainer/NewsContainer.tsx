@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { Country } from "../../types/countryTypes";
 import { fetchNews } from "../../slices/newsSlice";
 import FeaturedNews from "./FeaturedNews";
 import StandardNews from "./StandardNews";

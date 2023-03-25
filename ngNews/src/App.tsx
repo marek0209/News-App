@@ -7,9 +7,8 @@ import NewsContainer from "./components/NewsContainer/NewsContainer";
 import { store } from "./store";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
-function App() {
-  const [count, setCount] = useState(0);
 
+function App() {
   return (
     <div className="w-full  ">
       <Provider store={store}>
