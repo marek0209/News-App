@@ -69,9 +69,9 @@ const Sidebar: React.FC = () => {
                       onClick={() => handleCountryClick(country)}
                       className="inline-block p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
                     >
-                      <span className="ml-3 ">
+                      <span className="ml-3 flex items-center">
                         <img
-                          className=" "
+                          className="mr-2"
                           src={
                             "https://flagcdn.com/20x15/" +
                             country.countryCode +
@@ -79,7 +79,7 @@ const Sidebar: React.FC = () => {
                           }
                           alt={country.label}
                         />
-                        {country.label}
+                        <span>{country.label}</span>
                       </span>
                     </Link>
                   </li>
