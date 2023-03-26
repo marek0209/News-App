@@ -11,15 +11,17 @@ import countries from "../../Utils/countryList";
 const Sidebar: React.FC = () => {
   const [taskModalOpen, setTaskModalOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [isMenuOpen, setMenuIsOpen] = useState(false);
 
-  const selectedCountry = useSelector(
-    (state: RootState) => state.country.currentCountry
-  );
+  const handleStateChange = (state: any) => {
+    setMenuIsOpen(state.isOpen);
+  };
 
   const dispatch = useDispatch();
 
   const handleCountryClick = (country: Country) => {
     dispatch(setCurrentCountry(country));
+    setMenuIsOpen(false);
   };
 
   const filteredCountries = countries.filter((country) =>
@@ -33,7 +35,12 @@ const Sidebar: React.FC = () => {
         onClose={() => setTaskModalOpen(false)}
       />
       {!taskModalOpen && (
-        <Menu isOpen={false} right noOverlay>
+        <Menu
+          isOpen={isMenuOpen}
+          onStateChange={handleStateChange}
+          right
+          noOverlay
+        >
           <div>
             <aside
               className="absolute top-0 right-0 w-64 h-full z-40"
