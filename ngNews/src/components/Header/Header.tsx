@@ -30,7 +30,7 @@ const Header = () => {
               <button
                 onClick={() => setTaskModalOpen(true)}
                 type="button"
-                className="hidden md:block lg:block  text-white  bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center mr-3 md:mr-0 "
+                className="hidden md:block lg:block  text-white  bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded text-sm px-5 py-2.5 text-center mr-3 md:mr-0 "
               >
                 Pop up
               </button>
