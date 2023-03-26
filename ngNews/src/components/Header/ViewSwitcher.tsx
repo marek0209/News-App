@@ -7,15 +7,23 @@ const ViewSwitcher = () => {
   const dispatch = useDispatch();
   const view = useSelector((state: RootState) => state.view);
 
-  const handleViewChange = () => {
-    dispatch(switchView());
+  const handleGridClick = () => {
+    if (view.view !== ViewType.Grid) {
+      dispatch(switchView());
+    }
+  };
+
+  const handleListClick = () => {
+    if (view.view !== ViewType.List) {
+      dispatch(switchView());
+    }
   };
 
   return (
     <>
       <div className="  mr-10 bg-gray-800 text-sm text-gray-500 leading-none  inline-flex mr-50">
         <button
-          onClick={handleViewChange}
+          onClick={handleGridClick}
           className={
             "inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-slate-50 focus:text-blue-500 rounded-r-full px-4 py-2" +
             (view.view === ViewType.Grid ? "active text-blue-500" : "")
@@ -42,7 +50,7 @@ const ViewSwitcher = () => {
           <span>Grid</span>
         </button>
         <button
-          onClick={handleViewChange}
+          onClick={handleListClick}
           className={
             "inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-slate-50 focus:text-blue-500 rounded-r-full px-4 py-2" +
             (view.view === ViewType.List ? "active text-blue-500" : "")
