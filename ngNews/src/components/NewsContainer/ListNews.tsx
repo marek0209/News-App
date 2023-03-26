@@ -50,12 +50,6 @@ const ListNews: React.FC<Props> = ({ news }) => {
                     Source: {n.author}
                   </span>
                 </div>
-                <button
-                  className="inline text-xs font-medium text-gray-300 mt-0 mr-1 mb-0 ml-1 underline"
-                  onClick={() => handleOpenModal(n)}
-                >
-                  Read More
-                </button>
               </div>
             </div>
           </div>

@@ -71,9 +71,6 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
               <p className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1">
                 · {formatDate(news.publishedAt)} ·
               </p>
-              <p className="text-gray-200 text-sm font-medium inline mt-0 mr-1 mb-0 ml-1">
-                1hr 20min. read
-              </p>
             </div>
           </div>
         </div>
