@@ -16,14 +16,14 @@ const GridNews: React.FC<Props> = ({ news }) => {
 
   const renderArticle = (n: News) => (
     <div key={n.url}>
-      <div className="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
+      <div className="flex flex-col justify-between h-full col-span-12 space-y-3 sm:col-span-6 xl:col-span-4 items-start">
         <img
           src={
             n.urlToImage
               ? n.urlToImage
               : "https://archive.org/download/placeholder-image/placeholder-image.jpg"
           }
-          className="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56 btn-"
+          className="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm h-56 btn-"
           alt="image placeholder for article"
           onClick={() => handleOpenModal(n)}
         />
@@ -36,21 +36,14 @@ const GridNews: React.FC<Props> = ({ news }) => {
         >
           {removeSource(n.title, n.author ?? "")}
         </div>
+        <div>{n.description}</div>
         <div className="pt-2 pr-0 pb-0 pl-0">
           <div className="inline text-xs font-medium mt-0 mr-1 mb-0 ml-0 underline">
-            {n.author}
+            {n.author ?? "Unknown"}
           </div>
           <p className="inline text-xs font-medium mt-0 mr-1 mb-0 ml-1">
             · {formatDate(n.publishedAt)} ·
           </p>
-          <a
-            className="inline text-xs font-medium text-gray-300 mt-0 mr-1 mb-0 ml-1 underline"
-            href={n.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Read More
-          </a>
         </div>
       </div>
     </div>

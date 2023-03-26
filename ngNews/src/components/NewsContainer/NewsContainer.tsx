@@ -4,6 +4,7 @@ import { RootState } from "../../store";
 import { fetchNews } from "../../slices/newsSlice";
 import FeaturedNews from "./FeaturedNews";
 import StandardNews from "./StandardNews";
+import { useLocation } from "react-router-dom";
 
 const NewsContainer = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ const NewsContainer = () => {
   );
 
   const view = useSelector((state: RootState) => state.view.view);
+
+  const location = useLocation();
+  const isCountry = location.pathname.includes("/country/");
 
   useEffect(() => {
     dispatch(
@@ -37,10 +41,12 @@ const NewsContainer = () => {
 
   return (
     <>
-      <h2>News for {currentCountry?.label}</h2>
-      <div className="text-gray-900 pt-12 pr-0 pb-14 pl-0 bg-white w-full">
+      <h2 className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl z-10 mt-20 text-center">
+        {isCountry ? "News for " + currentCountry?.label : ""}
+      </h2>
+      <div className="text-gray-900  pr-0 pb-14 pl-0 bg-white w-full">
         <div
-          className="pt-10 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16
+          className="pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16
       max-w-7xl"
         >
           {news.length > 0 && <FeaturedNews news={news[0]} />}

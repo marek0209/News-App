@@ -58,15 +58,16 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
               <p className="inline text-xs font-medium">New</p>
             </div>
             <div
-              className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl z-10"
+              className="text-2xl font-bold leading-none lg:text-5xl xl:text-4xl z-10"
               onClick={() => handleOpenModal(news)}
             >
               {removeSource(news.title, news.author ?? "")}
             </div>
+            <div className="pr-10">{news.description}</div>
             <div className="pt-2 pr-0 pb-0 pl-0">
               <p className="text-sm font-medium inline">Source:</p>
               <div className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1 underline">
-                {news.author}
+                {news.author ?? "Unknown"}
               </div>
               <p className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1">
                 · {formatDate(news.publishedAt)} ·
