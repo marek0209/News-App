@@ -21,16 +21,16 @@ const FeaturedNews: React.FC<Props> = ({ news }) => {
   };
   return (
     <>
-      {modalVisible && selectedNews && (
-        <ArticleModal
-          title={selectedNews.title}
-          author={selectedNews.author}
-          description={selectedNews.description}
-          url={selectedNews.url}
-          onClose={handleCloseModal}
-        />
-      )}
       <div className=" flex flex-col items-center sm:px-5 md:flex-row ">
+        {modalVisible && selectedNews && (
+          <ArticleModal
+            title={selectedNews.title}
+            author={selectedNews.author}
+            description={selectedNews.description}
+            url={selectedNews.url}
+            onClose={handleCloseModal}
+          />
+        )}
         <div className="flex flex-col items-start justify-center w-full h-full pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
           <div
             className="flex flex-col items-start justify-center h-full space-y-3 transform md:pr-10 lg:pr-16

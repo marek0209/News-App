@@ -72,7 +72,7 @@ const ArticleModal: React.FC<Props> = ({
                 href={url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-base text-white  mr-5 btn bg-green-500 rounded p-2 hover:no-underline hover:bg-green-700"
+                className="text-base text-white  mr-5 btn p-2 bg-green-500 rounded  hover:no-underline  hover:bg-green-700 whitespace-nowrap"
               >
                 Read more
               </a>
