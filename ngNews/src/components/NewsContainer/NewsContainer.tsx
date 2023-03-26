@@ -25,7 +25,11 @@ const NewsContainer = () => {
     dispatch(
       // @ts-ignore
 
-      fetchNews(currentCountry)
+      fetchNews(
+        currentCountry == null
+          ? { countryCode: "pl", label: "Poland" }
+          : currentCountry
+      )
     );
   }, [currentCountry, dispatch]);
 
