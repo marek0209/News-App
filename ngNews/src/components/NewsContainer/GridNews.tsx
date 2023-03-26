@@ -18,9 +18,14 @@ const GridNews: React.FC<Props> = ({ news }) => {
     <div key={n.url}>
       <div className="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
         <img
-          src="https://archive.org/download/placeholder-image/placeholder-image.jpg"
+          src={
+            n.urlToImage
+              ? n.urlToImage
+              : "https://archive.org/download/placeholder-image/placeholder-image.jpg"
+          }
           className="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56 btn-"
           alt="image placeholder for article"
+          onClick={() => handleOpenModal(n)}
         />
         <p className="bg-green-500 flex items-center leading-none text-sm font-medium text-gray-50 pt-1.5 pr-3 pb-1.5 pl-3 rounded-full uppercase ">
           News
