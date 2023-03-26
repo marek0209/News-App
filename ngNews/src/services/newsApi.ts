@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { News } from "../types/newsTypes";
 
-const API_KEY = import.meta.env.VITE_APP_API_URL;
+const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 interface NewsApiResponse {
   articles: News[];
