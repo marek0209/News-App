@@ -6,7 +6,7 @@ interface CountryState {
 }
 
 const initialState: CountryState = {
-  currentCountry: { countryCode: "pl", label: "Poland" },
+  currentCountry: null,
 };
 
 export const countrySlice = createSlice({

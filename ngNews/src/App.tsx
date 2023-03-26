@@ -9,15 +9,16 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
 import UrlChecker from "./components/UrlChecker/UrlChecker";
+import { Country } from "./types/countryTypes";
 
 function App() {
   return (
     <div className="w-full  ">
       <Provider store={store}>
         <Router>
-          <UrlChecker />
           <Header />
           <Sidebar />
+          <UrlChecker />
           <Routes>
             <Route path="/country/:country" element={<NewsContainer />} />
             <Route path="/" element={<NewsContainer />} />
