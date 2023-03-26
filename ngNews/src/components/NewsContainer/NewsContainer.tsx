@@ -5,7 +5,6 @@ import { fetchNews } from "../../slices/newsSlice";
 import FeaturedNews from "./FeaturedNews";
 import StandardNews from "./StandardNews";
 import { useLocation } from "react-router-dom";
-import UrlChecker from "../UrlChecker/UrlChecker";
 
 const NewsContainer = () => {
   const dispatch = useDispatch();
@@ -28,8 +27,6 @@ const NewsContainer = () => {
 
       fetchNews(currentCountry)
     );
-    console.log(currentCountry);
-    console.log(news);
   }, [currentCountry, dispatch]);
 
   if (loading) {
@@ -42,7 +39,6 @@ const NewsContainer = () => {
 
   return (
     <>
-      {console.log(news)}
       <h2 className="text-2xl font-bold leading-none lg:text-5xl xl:text-6xl z-10 mt-20 text-center">
         {isCountry ? "News for " + currentCountry?.label : ""}
       </h2>
