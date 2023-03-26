@@ -27,7 +27,7 @@ const Sidebar: React.FC = () => {
   );
 
   return (
-    <>
+    <div className="absolute top-0 pr-1 right-0 w-64 h-full z-40">
       <TaskModal
         isOpen={taskModalOpen}
         onClose={() => setTaskModalOpen(false)}
@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
         <Menu isOpen={false} right noOverlay>
           <div>
             <aside
-              className="fixed top-0 right-0 w-64 h-full z-40"
+              className="absolute top-0 right-0 w-64 h-full z-40"
               aria-label="Sidenav"
             >
               <div className="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -89,7 +89,7 @@ const Sidebar: React.FC = () => {
           </div>
         </Menu>
       )}
-    </>
+    </div>
   );
 };
 
