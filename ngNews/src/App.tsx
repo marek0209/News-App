@@ -8,12 +8,14 @@ import { store } from "./store";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
 import NotFound from "./components/NotFound/NotFound";
+import UrlChecker from "./components/UrlChecker/UrlChecker";
 
 function App() {
   return (
     <div className="w-full  ">
       <Provider store={store}>
         <Router>
+          <UrlChecker />
           <Header />
           <Sidebar />
           <Routes>

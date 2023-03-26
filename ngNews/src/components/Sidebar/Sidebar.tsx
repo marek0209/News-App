@@ -3,10 +3,10 @@ import { slide as Menu } from "react-burger-menu";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
 import { setCurrentCountry } from "../../slices/countrySlice";
-import countries from "../../Utils/countryList";
 import { Country } from "../../types/countryTypes";
 import { Link } from "react-router-dom";
 import TaskModal from "../Modals/TaskModal";
+import countries from "../../Utils/countryList";
 
 const Sidebar: React.FC = () => {
   const [taskModalOpen, setTaskModalOpen] = useState(false);
@@ -89,7 +89,6 @@ const Sidebar: React.FC = () => {
           </div>
         </Menu>
       )}
-      )
     </>
   );
 };
