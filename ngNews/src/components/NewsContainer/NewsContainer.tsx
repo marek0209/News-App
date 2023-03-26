@@ -5,6 +5,7 @@ import { fetchNews } from "../../slices/newsSlice";
 import FeaturedNews from "./FeaturedNews";
 import StandardNews from "./StandardNews";
 import { useLocation } from "react-router-dom";
+import { Country } from "../../types/countryTypes";
 
 const NewsContainer = () => {
   const dispatch = useDispatch();
@@ -20,16 +21,14 @@ const NewsContainer = () => {
 
   const location = useLocation();
   const isCountry = location.pathname.includes("/country/");
+  const isHomePage = location.pathname === "/";
+  const defaultCountry: Country = { countryCode: "pl", label: "Poland" };
 
   useEffect(() => {
     dispatch(
       // @ts-ignore
 
-      fetchNews(
-        currentCountry == null
-          ? { countryCode: "pl", label: "Poland" }
-          : currentCountry
-      )
+      fetchNews(isHomePage ? defaultCountry : currentCountry)
     );
   }, [currentCountry, dispatch]);
 
