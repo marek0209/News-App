@@ -23,9 +23,9 @@ const Footer: React.FC = () => {
 
   return (
     <footer className=" bg-white rounded-lg  m-4 dark:bg-gray-800">
-      <div className="w-full mx-auto container md:p-6 p-4 md:flex md:items-center md:justify-between">
-        <FooterText />
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+      <div className="w-full mx-auto container md:p-6 p-4 md:flex md:items-center justify-center">
+        <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+          <FooterText />
           <CurrentTime currentTime={currentTime} />
           <NewsCount numberOfNewsArticles={numberOfNewsArticles} />
         </ul>

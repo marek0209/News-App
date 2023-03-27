@@ -7,7 +7,7 @@ interface Props {
 const CurrentTime: React.FC<Props> = ({ currentTime }) => {
   return (
     <li>
-      <p>Current time: {currentTime.toLocaleTimeString()}</p>
+      <p className="text-center">{currentTime.toLocaleTimeString()}</p>
     </li>
   );
 };
