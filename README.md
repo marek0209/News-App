@@ -42,3 +42,20 @@ Now the application should be available at http://localhost:3000/
 
 ### `npm run preview`
 
+
+## Overview
+Loom video:
+https://www.loom.com/share/85fe783923304b48ad1ce833a4246c6e
+
+![Homepage](https://user-images.githubusercontent.com/19314030/227906529-ff96c009-9b27-4b0a-aaeb-8ec24e6b47c3.png)
+
+![Sidebar](https://user-images.githubusercontent.com/19314030/227907051-9468d36e-ed69-4291-96af-8e86604ff376.png)
+
+![Modal](https://user-images.githubusercontent.com/19314030/227907438-be119c2d-bd96-4589-9f01-45816df0d6db.png)
+
+Benchmark Lighthouse
+
+![Lighthouse benchmark](https://user-images.githubusercontent.com/19314030/227906390-8748752f-af7b-427d-97ab-14df940a9f1a.png)
+
+
+
