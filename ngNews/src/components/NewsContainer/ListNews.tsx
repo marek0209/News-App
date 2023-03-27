@@ -26,7 +26,11 @@ const ListNews: React.FC<Props> = ({ news }) => {
         />
       )}
       {news.map((n: News) => (
-        <div key={n.url} className="dark:bg-gray-800 dark:text-gray-100">
+        <div
+          key={n.url}
+          className="dark:bg-gray-800 dark:text-gray-100"
+          onClick={() => handleOpenModal(n)}
+        >
           <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900">
             <div className="flex items-center justify-between">
               <span className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1">
@@ -36,10 +40,7 @@ const ListNews: React.FC<Props> = ({ news }) => {
                 News
               </p>
             </div>
-            <div
-              className="text-lg font-bold sm:text-xl md:text-2xl cursor-pointer"
-              onClick={() => handleOpenModal(n)}
-            >
+            <div className="text-lg font-bold sm:text-xl md:text-2xl cursor-pointer">
               {removeSource(n.title, n.author ?? "")}
             </div>
             <div className="pt-2 pr-0 pb-0 pl-0">

@@ -16,7 +16,10 @@ const GridNews: React.FC<Props> = ({ news }) => {
 
   const renderArticle = (n: News) => (
     <div key={n.url}>
-      <div className="flex flex-col justify-between h-full col-span-12 space-y-3 sm:col-span-6 xl:col-span-4 items-start">
+      <div
+        className="flex flex-col justify-between h-full col-span-12 space-y-3 sm:col-span-6 xl:col-span-4 items-start"
+        onClick={() => handleOpenModal(n)}
+      >
         <img
           src={
             n.urlToImage
@@ -25,15 +28,11 @@ const GridNews: React.FC<Props> = ({ news }) => {
           }
           className="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm h-56 btn-"
           alt="image placeholder for article"
-          onClick={() => handleOpenModal(n)}
         />
         <p className="bg-green-500 flex items-center leading-none text-sm font-medium text-gray-50 pt-1.5 pr-3 pb-1.5 pl-3 rounded-full uppercase ">
           News
         </p>
-        <div
-          className="text-lg font-bold sm:text-xl md:text-2xl cursor-pointer"
-          onClick={() => handleOpenModal(n)}
-        >
+        <div className="text-lg font-bold sm:text-xl md:text-2xl cursor-pointer">
           {removeSource(n.title, n.author ?? "")}
         </div>
         <div>{n.description}</div>
