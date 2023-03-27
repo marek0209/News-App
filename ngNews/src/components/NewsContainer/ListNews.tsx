@@ -48,7 +48,7 @@ const ListNews: React.FC<Props> = ({ news }) => {
               <div className="flex items-center justify-between mt-4">
                 <div>
                   <span className="text-sm font-medium inline">
-                    Source: {n.author ?? "Unknown"}
+                    {n.author ?? "Unknown"}
                   </span>
                 </div>
               </div>
