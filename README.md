@@ -1,33 +1,44 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4caf47a6-0971-4c5d-8bf2-aa4fc6697e6f/deploy-status)](https://app.netlify.com/sites/admirable-piroshki-c581c2/deploys)
+
 # gnNews - gnStudio React.js developer challenge
 
-Witaj, jeżeli znalazłeś się w tym miejscu to najprawdopodobniej chcesz dołączyć do niesamowitego teamu tworzącego rozwiązania szyte na miarę i chcesz w końcu realizować projekty, które nie będą nudne, będą sprawiały Ci frajdę i będą napawały Cię dumą kiedy tylko o nich pomyślisz.
+## Run in docker
+### `cd ngNews`
 
-Cóż, projekty są różne, więc może tak właśnie być, a może być zupełnie odwrotnie 😉 Możemy Ci jedynie zagwarantować, że nie będziesz się nudzić.
+In main app folder type this command:
 
-## O zadaniu
+### `docker build -t ng-news:dev .`
 
-Abyśmy mogli bliżej poznać Twoje umiejętności techniczne, stopień zaangażowania oraz sposób myślenia, przygotowaliśmy dla Ciebie zadanie polegające na stworzeniu prostej aplikacji będącej "agregatorem newsów" szumnie nazwanej przez nas roboczo **gnNews**.
+This command building docker container
 
-To na czym nam zależy to przede wszystkim czytelny kod, działająca aplikacja i UI, który nie wygląda jak konar ciosany tępym scyzorykiem (hint: pamiętaj o RWD, ale ciii, nie mów nikomu, że Ci podpowiedziałem 😉)
+### `docker run -p 3000:5173 ng-news:dev`
 
-## Następne kroki
+This command running previously built container
 
-- wykonaj forka tego repozytorium jako prywatne repo
-- postępuj z instrukcjami zawartymi w [opis-zadania.md](./opis-zadania.md)
-- rozwiąż zadanie najlepiej jak potrafisz
-- dodaj użytkownika [gn-studio-pl](https://github.com/gn-studio-pl) do repozytorium
+Now the application should be available at http://localhost:3000/
 
-## Uwagi
 
-- aplikację wykonaj w oparciu o React.js, wykorzystanie TypeScript'u bedzie mile widziane i dodatkowo punktowane
-- wykorzystaj nastepujace biblioteki: Redux toolkit, react-test-lib. Może odbierzesz to jako wychodzenie z armatą na muchy ale korzystamy z nich w naszych projektach i chcemy wiedziec czy czujesz się w nich dobrze
-- nie musisz tworzyć całego UI samemu, możesz skorzystać z dowolnej biblioteki UI
-- nie ma tutaj limitu czasu (poza wyznaczonym deadlinem), ale zalecamy, abyś nie spędzał nad tym zadaniem więcej jak 12 godzin
-- staraj się napisać swój kod najlepiej jak potrafisz
-- otestowanie przynajmniej części aplikacji mile widziane 😉
+## Run localy
 
-## Pytania?
+Make sure you have installed Node v18.x
 
-Jeżeli masz jakiekolwiek pytania co do wykonywanego zadania, bądź coś nie jest dla Ciebie jasne, albo masz trudności na którymś etapie, nie krępuj się - dzwoń, pisz - wyjaśnimy (chyba 😛)
+### `cd ngNews`
 
-## Powodzenia!
+In main app folder type this command:
+
+### `npm install`
+
+This command should install all dependencies
+
+### `npm run dev`
+
+This should run app in dev mode
+
+Now the application should be available at http://localhost:3000/
+
+## Build for production
+
+### `npm run build`
+
+### `npm run preview`
+
