@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4caf47a6-0971-4c5d-8bf2-aa4fc6697e6f/deploy-status)](https://app.netlify.com/sites/admirable-piroshki-c581c2/deploys)
 
-# gnNews - gnStudio React.js developer challenge
+# News Appc - React.js developer challenge
 
 ## Run in docker
 ### `cd ngNews`
